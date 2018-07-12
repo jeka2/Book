@@ -1,3 +1,4 @@
+<%= image_tag @user.avatar.url(:thumb) if @user.avatar? %>
 <ul id="books">
   <% @books.each do |book| %>
     <li id="<%= book.name %>_info">

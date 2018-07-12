@@ -13,9 +13,9 @@
     <%= f.text_field :last_name, autofocus: true, autocomplete: "off" %>
   </div>
 
-  <div class="image-upload">
-    
-  </div>
+ <div class="image-upload">
+    <%= f.file_field :avatar %>
+ </div>
 
   <div class="field">
     <%= f.label :email %><br />
