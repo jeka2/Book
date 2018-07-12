@@ -1,6 +1,18 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.default_url_options = { :host => 'vast-plateau-24085.herokuapp.com' }
+
+  config.action_mailer.smtp_settings = {
+    user_name:      ENV['SENDGRID_USERNAME'],
+    password:       ENV['SENDGRID_PASSWORD'],
+    domain:         'vast-plateau-24085.herokuapp.com',
+    address:       'smtp.gmail.com',
+    port:          '587',
+    authentication: :plain
+
+  }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
