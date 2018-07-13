@@ -14,4 +14,10 @@
 //= require jquery
 //= require turbolinks
 //= require bootstrap
+//= requre jquery.easy-autocomplete
 //= require_tree .
+$(document).ready(function(){
+	$('.user-dropdown').click(function(e){
+		console.log("it works");
+	});
+});

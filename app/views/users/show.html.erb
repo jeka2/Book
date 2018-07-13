@@ -1,4 +1,8 @@
-<%= image_tag @user.avatar.url(:thumb) if @user.avatar? %>
+<%= form_with url: autocomplete_path, local: true, method: :get do |f|%>
+  <%= f.text_field :search, placeholder: "Search", data: { behavior: "autocomplete" }, id: "search", class: "form-control mr-sm-2" %>
+  <%= f.button "Search", class: 'btn btn-outline-success my-2 my-sm=0' %>
+<% end %>
+
 <ul id="books">
   <% @books.each do |book| %>
     <li id="<%= book.name %>_info">
