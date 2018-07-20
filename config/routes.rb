@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations'}
 
   resources :users do
+    resources :groups, only: [:new, :create, :destroy, :show]
     resources :books, only: [:create, :new, :destroy, :show]
   end
 
   resources :messages, only: [:index, :create]
 
-  resources :books, only: [:index, :show]
+  resources :books, only: [:index, :show] do 
+    resources :groups, only: [:new, :create, :destroy, :show]
+  end 
 
   get :autocomplete, controller: :main
 
@@ -18,6 +21,8 @@ Rails.application.routes.draw do
   get :user_autocomplete, controller: :main
 
   get :user_search, controller: :main
+
+  get '/users/sign_out' => 'devise/sessions#destroy'
 
   get '/search' => 'main#search'
 

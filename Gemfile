@@ -25,6 +25,7 @@ gem 'mini_magick'
 gem 'carrierwave-graphicsmagick'
 gem 'ransack'
 gem 'redis'
+gem 'kramdown'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
