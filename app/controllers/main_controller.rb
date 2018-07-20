@@ -1,6 +1,6 @@
 class MainController < ApplicationController
 	before_action :load_user
-	before_action :force_json, only: :autocomplete
+	before_action :force_json, only: [:autocomplete, :user_autocomplete]
 
 	def search 
 		@names = @books.ransack(name_cont: params[:q]).result(distinct: true).order('name ASC')
@@ -12,6 +12,13 @@ class MainController < ApplicationController
 		@authors = Author.all.ransack(name_cont: params[:q]).result.limit(5).order('name ASC')
 	end 
 
+	def user_search 
+		@user = User.where.not(id: current_user.id).ransack(email_cont: params[:q]).result.order('email ASC')
+	end
+
+	def user_autocomplete
+		@user = User.where.not(id: current_user.id).ransack(email_cont: params[:q]).result.limit(5).order('email ASC')
+	end
 	
 
 	private

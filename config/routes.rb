@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   get :search, controller: :main
 
+  get :user_autocomplete, controller: :main
+
+  get :user_search, controller: :main
+
   get '/search' => 'main#search'
 
   get '/my_profile' => 'users#show', as: :user_root

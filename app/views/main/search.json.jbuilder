@@ -7,7 +7,7 @@ end
 
 json.authors do 
 	json.array!(@author) do |book|
-		json.author book.author
+		json.name book.name
 		json.url book_path(book)
 	end
 end 

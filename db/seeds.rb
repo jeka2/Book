@@ -7,6 +7,16 @@ test_user = User.create!(
 )
 
 10.times do 
+  User.create!(
+    email: Faker::Internet.email,
+    password: "password",
+    first_name: Faker::Simpsons.character,
+    last_name: "",
+    confirmed_at: Time.now
+    )
+end
+
+10.times do 
   Message.create!(
     content: "Hi",
     user: test_user
@@ -24,7 +34,7 @@ authors = Author.all
 
 
 
-test_books = 10.times do
+test_books = 50.times do
   Book.create!(
     name: Faker::Book.title,
     publisher: Faker::FunnyName.name,

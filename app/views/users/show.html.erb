@@ -1,5 +1,5 @@
-<%= form_with url: search_path, local: true, method: :get do |f|%>
-              <%= f.text_field :q, placeholder: "Search", data: { behavior: "autocomplete" }, class: "form-control mr-sm-2" %>
+<%= form_with url: user_search_path, local: true, method: :get do |f|%>
+              <%= f.text_field :q, id: 'email_search', placeholder: "Search", data: { behavior: "autocomplete" }, class: "form-control mr-sm-2" %>
               <%= f.button "Search", id: 'search', class: 'btn btn-outline-success my-2 my-sm=0' %>
             <% end %>
 
