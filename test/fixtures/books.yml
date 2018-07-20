@@ -2,14 +2,20 @@
 
 one:
   name: MyString
+  publisher: MyString
+  publish_date: 2018-07-16 10:52:39
   description: MyString
   finished: false
   current_page: 1
   user: one
+  author: one
 
 two:
   name: MyString
+  publisher: MyString
+  publish_date: 2018-07-16 10:52:39
   description: MyString
   finished: false
   current_page: 1
   user: two
+  author: two

@@ -12,10 +12,14 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">BookClub</a>
-        <h5>Welcome, <%= current_user.first_name %> <%= current_user.last_name %>!</h5>
+        <% if user_signed_in? %>
+          <h5>Welcome, <%= current_user.first_name %> <%=current_user.last_name %></h5>
+        <% else %>
+          <h5>Welcome, Guest!</h5>
+        <% end %>
         <div class="nav nabbar-nav navbar-right">
           <% if user_signed_in? %>
-              <div class="pull-right dropdown"><button class="btn    btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup= "true" aria-expanded="false"><strong><%= current_user.email %></strong><%= image_tag current_user.avatar.url(:thumb) if @user.avatar? %></button>
+              <div class="pull-right dropdown"><button class="btn    btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup= "true" aria-expanded="false"><strong><%= current_user.email %></strong><%= image_tag current_user.avatar.url(:thumb) unless current_user.avatar.blank? %></button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <ul class="dropdown-actions list-unstyled">
                     <li><a class="dropdown-item" href="/users/edit">Edit Profile</a></li>
@@ -24,6 +28,10 @@
                 </div>
               </div>
             </div>
+            <%= form_with url: search_path, local: true, method: :get do |f|%>
+              <%= f.text_field :q, placeholder: "Search", data: { behavior: "autocomplete" }, class: "form-control mr-sm-2" %>
+              <%= f.button "Search", id: 'search', class: 'btn btn-outline-success my-2 my-sm=0' %>
+            <% end %>
           </div>
         </nav>
 

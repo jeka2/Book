@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
 
   has_many :books
+  has_many :messages
 
   mount_uploader :avatar, AvatarUploader
 

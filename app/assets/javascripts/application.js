@@ -13,11 +13,7 @@
 //= require rails-ujs
 //= require jquery
 //= require turbolinks
+//= requre cable
 //= require bootstrap
 //= requre jquery.easy-autocomplete
 //= require_tree .
-$(document).ready(function(){
-	$('.user-dropdown').click(function(e){
-		console.log("it works");
-	});
-});

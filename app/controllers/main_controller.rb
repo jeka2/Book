@@ -3,13 +3,13 @@ class MainController < ApplicationController
 	before_action :force_json, only: :autocomplete
 
 	def search 
-		@names = @books.ransack(name_cont: params[:q]).result(distinct: true)
-		@author = @books.ransack(author_cont: params[:q]).result
+		@names = @books.ransack(name_cont: params[:q]).result(distinct: true).order('name ASC')
+		@authors = Author.all.ransack(name_cont: params[:q]).result.order('name ASC')
 	end 
 
 	def autocomplete 
-		@names = @books.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
-		@author = @books.ransack(author_cont: params[:q])
+		@names = @books.ransack(name_cont: params[:q]).result(distinct: true).limit(5).order('name ASC')
+		@authors = Author.all.ransack(name_cont: params[:q]).result.limit(5).order('name ASC')
 	end 
 
 	

@@ -24,6 +24,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'carrierwave-graphicsmagick'
 gem 'ransack'
+gem 'redis'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

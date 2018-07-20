@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get 'messages/create'
+
   devise_for :users, controllers: { registrations: 'users/registrations'}
 
   resources :users do
     resources :books, only: [:create, :new, :destroy, :show]
   end
+
+  resources :messages, only: [:index, :create]
 
   resources :books, only: [:index, :show]
 
@@ -18,5 +22,8 @@ Rails.application.routes.draw do
   get '/dropdown' => 'users#dropdown', as: :user_dropdown
 
   root 'users#show'
+
+  mount ActionCable.server, at: '/cable'
+
 
 end

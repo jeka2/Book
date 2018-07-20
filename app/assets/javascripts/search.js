@@ -1,5 +1,6 @@
 document.addEventListener("turbolinks:load", function(){
-	$input = $("#search")
+
+	$input = $("[data-behavior='autocomplete']")
 
 	var options = {
 		getValue: "name",
@@ -8,18 +9,19 @@ document.addEventListener("turbolinks:load", function(){
 		},
 		categories: [
 			{
-				listlocation: "names",
-				header: "<strong>Book</strong>"
+				listLocation: "names",
+				header: "<strong>Books</strong>"
 			},
 			{
-				listlocation: "authors",
-				header: "<strong>Author</strong>"
+				listLocation: "authors",
+				header: "<strong>Authors</strong>"
 			}
 		],
 		list: {
 			onChooseEvent : function() {
 				var url = $input.getSelectedItemData().url;
-				console.log(url);
+				$input.val('');
+				Turbolinks.visit(url);
 			}
 		}
 	}
