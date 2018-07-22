@@ -8,10 +8,14 @@ Rails.application.routes.draw do
     resources :books, only: [:create, :new, :destroy, :show]
   end
 
-  resources :messages, only: [:index, :create]
+  resources :groups, only: [:new, :create, :destroy] do 
+    resources :users, only: [:index, :show]
+  end
+
+  resources :messages, only: [:index, :create, :destroy]
 
   resources :books, only: [:index, :show] do 
-    resources :groups, only: [:new, :create, :destroy, :show]
+    resources :groups, only: [:index, :new, :create, :destroy, :show]
   end 
 
   get :autocomplete, controller: :main

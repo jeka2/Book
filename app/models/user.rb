@@ -4,7 +4,8 @@ class User < ApplicationRecord
 
 
   has_many :books
-  has_many :groups
+  has_many :group_users
+  has_many :groups, :through => :group_users
   has_many :messages
   
   validates :first_name, presence: true

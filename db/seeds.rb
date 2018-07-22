@@ -44,7 +44,6 @@ end
 
 test_group = Group.create!(
   name: Faker::Simpsons.character,
-  user: test_user
   )
 
 test_user2 = User.create!(

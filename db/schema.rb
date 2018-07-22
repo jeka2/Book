@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180720193341) do
+ActiveRecord::Schema.define(version: 20180721215934) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -35,14 +35,23 @@ ActiveRecord::Schema.define(version: 20180720193341) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
+  create_table "group_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.boolean "subscribed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_users_on_group_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
+    t.boolean "subscribed", default: false
     t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_groups_on_book_id"
-    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -66,7 +75,6 @@ ActiveRecord::Schema.define(version: 20180720193341) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "confirmation_token"
@@ -77,7 +85,6 @@ ActiveRecord::Schema.define(version: 20180720193341) do
     t.string "avatar"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["group_id"], name: "index_users_on_group_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
