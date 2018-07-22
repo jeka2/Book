@@ -1,1 +1,2 @@
-<%= link_to "Create a New Group for \"#{@book.name}\"", new_book_group_path(@book) %>
+<%= link_to "Create a New Group for \"#{@book.name}\"", new_book_group_path(@book) %><br>
+<%= link_to "Subscribe to the book", create_user_book_index_path, action: "create" %>
