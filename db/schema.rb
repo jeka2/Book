@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180721215934) do
     t.boolean "finished"
     t.integer "chapter"
     t.integer "current_page"
+    t.boolean "subscribed", default: false
     t.integer "user_id"
     t.integer "author_id"
     t.datetime "created_at", null: false

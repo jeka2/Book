@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :groups, only: [:index, :new, :create, :destroy, :show]
   end 
 
+  resources :subscribe, only: [:create, :destroy]
+
   get :autocomplete, controller: :main
 
   get :search, controller: :main

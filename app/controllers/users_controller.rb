@@ -4,10 +4,6 @@ class UsersController < ApplicationController
     	@books = current_user.books.all
   	end
 
-  	def dropdown
-
-  	end
-
   	private
 
   	def user_params

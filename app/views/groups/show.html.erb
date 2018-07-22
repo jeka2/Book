@@ -1,1 +1,5 @@
-e
+<% unless @group.subscribed %>
+	<%= link_to "subscribe", subscribe_index_path, method: :post, remote: true, id: "subscribe_button" %>
+<% else %>
+	<%= link_to "unsubscribe", subscribe_path(:book_id => params[:book_id]), method: :delete, remote: true, id: "unsubscribe_button" %>
+<% end %>
