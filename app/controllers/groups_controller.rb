@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
 	def create
 		group = Group.new(group_params)
 		book_id = params[:group][:book_id]
-
+		
 		if group.save
 			group.update_attributes(subscribed: true)
 		else 

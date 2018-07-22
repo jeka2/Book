@@ -18,6 +18,17 @@ Rails.application.routes.draw do
     resources :groups, only: [:index, :new, :create, :destroy, :show]
   end 
 
+
+
+  resources :book_groups, only: :index, as: :book_groups
+  resources :book_groups, only: :create, as: :create_book_group
+  resources :book_groups, only: :new, as: :new_book_group
+  resources :book_groups, only: :show, as: :grou_book
+
+
+
+
+
   resources :subscribe, only: [:create, :destroy]
 
   get :autocomplete, controller: :main
