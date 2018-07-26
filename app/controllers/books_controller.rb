@@ -7,8 +7,11 @@ class BooksController < ApplicationController
 	
   	def show
   		@book = Book.find(params[:id])
-  		@groups = Group.where(user_id: @book.id)
+  		@group = Group.where(user_id: @user.id)
   		@author = Author.find_by(id: @book.author_id)
+  		@subscribed = true if UserBook.find_by(user_id: @user.id, book_id: @book.id)
+  		p UserBook.find_by(user_id: @user.id, book_id: @book.id)
+  		p @subscribed
   	end
 
   	private 

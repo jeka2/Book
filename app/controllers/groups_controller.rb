@@ -18,9 +18,9 @@ class GroupsController < ApplicationController
 	def create
 		group = Group.new(group_params)
 		book_id = params[:group][:book_id]
-		
+
 		if group.save
-			group.update_attributes(subscribed: true)
+			BookGroup.create!(group_id: group.id, book_id: book_id)
 		else 
 			flash[:notice] = "There was an error creating the group, please try again!"
 		end
@@ -30,17 +30,16 @@ class GroupsController < ApplicationController
 	def show
 		@group = Group.find(params[:id])
 		@book = Book.find(params[:book_id])
-		p current_user
-		p @book
+		@subscribed = true if BookGroup.find_by(group_id: @group.id, book_id: @book.id)
 	end
 
 	private
 
 	def group_params 
 		unless params[:user_id]
-			params.require(:group).permit(:name, :book_id, :subscribed)
+			params.require(:group).permit(:name, :book_id)
 		else 
-			params.require(:group).permit(:name, :user_id, :subscribed)
+			params.require(:group).permit(:name, :user_id)
 		end
 	end 
 end

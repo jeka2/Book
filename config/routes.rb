@@ -19,15 +19,15 @@ Rails.application.routes.draw do
   end 
 
 
-
-  resources :group_books, only: :index, as: :group_books
-  resources :group_books, only: :create, as: :create_group_book
-  resources :group_books, only: :new, as: :group_book
-  resources :group_books, only: :show, as: :group_book
-
+  resources :book_groups, only: :show, as: :show_book_group
+  resources :book_groups, only: :new, as: :new_book_group
+  resources :book_groups, only: :destroy, as: :destroy_book_group
+  resources :book_groups, only: :create, as: :create_book_group
 
 
-  resources :user_book, only: :create, as: :create_user_book
+
+
+  resources :user_book, only: [:create, :destroy]
 
   resources :subscribe, only: [:create, :destroy]
 

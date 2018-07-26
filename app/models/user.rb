@@ -3,7 +3,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  has_many :books
   has_many :group_users
   has_many :user_books
   has_many :books, :through => :user_books

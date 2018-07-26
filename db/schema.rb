@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180722204933) do
+ActiveRecord::Schema.define(version: 20180725191949) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.string "biography"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "book_groups", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_groups_on_book_id"
+    t.index ["group_id"], name: "index_book_groups_on_group_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -48,7 +57,6 @@ ActiveRecord::Schema.define(version: 20180722204933) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
-    t.boolean "subscribed", default: false
     t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -68,7 +76,6 @@ ActiveRecord::Schema.define(version: 20180722204933) do
   create_table "user_books", force: :cascade do |t|
     t.integer "book_id"
     t.integer "user_id"
-    t.boolean "subscribed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_user_books_on_book_id"
