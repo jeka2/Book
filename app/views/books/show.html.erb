@@ -1,6 +1,6 @@
-<%= link_to "Create a New Group for \"#{@book.name}\"", new_new_book_group_path %><br>
+<%= link_to "Create a New Group for \"#{@book.name}\"", new_book_book_group_path(@book), method: :get %><br>
 <% unless @subscribed %>
-	<%= link_to "Subscribe to the book", user_book_index_path(book_id: params[:id]), method: :post, id: "subscribe", remote: true %>
+	<%= link_to "Subscribe to the book", user_user_groups_path(@user,book_id: params[:id]), method: :post, id: "subscribe", remote: true %>
 <% else %>
-	<%= link_to "Unsubscribe from the book", user_book_index_path(book_id: params[:id]), method: :delete, id: "unsubscribe", remote: true %>
+	<%= link_to "Unsubscribe from the book", user_user_group_path(book_id: params[:id]), method: :delete, id: "unsubscribe", remote: true %>
 <% end %>

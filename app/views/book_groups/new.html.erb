@@ -1,6 +1,5 @@
-<%= form_for @group do |f| %>
+<%= form_for @group, :url => book_book_groups_path, :method => :post do |f| %>
 	Group Name: <%= f.text_field :name %>
-				<%= f.hidden_field :subscribed, :value => true %>
 				<%= f.hidden_field :book_id, :value => params[:book_id].to_i %>
 				<%= f.submit %>
 <% end %>

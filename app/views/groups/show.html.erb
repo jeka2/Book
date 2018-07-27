@@ -1,6 +1,0 @@
-<% unless @subscribed %>
-	<%= link_to "subscribe", create_book_group_index_path(:group_id => params[:id], :book_id => params[:book_id]), method: :post, remote: true, id: "subscribe_button" %>
-<% else %>
-	<%= link_to "unsubscribe", destroy_book_group_path(@group, :book_id => params[:book_id]), method: :delete, action: :destroy, remote: true, id: "unsubscribe_button" %>
-<% end %>
-<%= params %>

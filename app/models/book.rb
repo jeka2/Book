@@ -4,6 +4,5 @@ class Book < ApplicationRecord
   has_many :groups
   has_many :book_groups
   has_many :user_books
-  has_many :users, :through => :user_books
   has_many :groups, :through => :book_groups
 end
