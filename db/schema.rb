@@ -10,22 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180727015217) do
+ActiveRecord::Schema.define(version: 20180805233047) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.string "biography"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "book_groups", force: :cascade do |t|
-    t.integer "book_id"
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_book_groups_on_book_id"
-    t.index ["group_id"], name: "index_book_groups_on_group_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -45,12 +36,30 @@ ActiveRecord::Schema.define(version: 20180727015217) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
+  create_table "collections", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_collections_on_book_id"
+    t.index ["user_id"], name: "index_collections_on_user_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_groups_on_book_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_memberships_on_group_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -61,24 +70,6 @@ ActiveRecord::Schema.define(version: 20180727015217) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_messages_on_group_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
-  create_table "user_books", force: :cascade do |t|
-    t.integer "book_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_user_books_on_book_id"
-    t.index ["user_id"], name: "index_user_books_on_user_id"
-  end
-
-  create_table "user_groups", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_user_groups_on_group_id"
-    t.index ["user_id"], name: "index_user_groups_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

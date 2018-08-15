@@ -1,0 +1,2 @@
+$(".unsubscribe").hide();
+$('.subscription').append("<%= j render(:partial => 'book_groups/unsubscribe', :locals => { :user => @user_id, :id => @book_id.to_i }) %>")

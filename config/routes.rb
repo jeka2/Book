@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations'}
 
   resources :users, only: :show do
-    resources :user_groups, only: [:new, :create, :destroy, :show]
+    resources :user_groups, only: [:new, :create, :destroy, :index]
     resources :user_books, only: [:create, :new, :destroy, :show]
   end
 

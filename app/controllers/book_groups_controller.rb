@@ -1,10 +1,7 @@
 class BookGroupsController < ApplicationController
 
 	def index 
-		book_id = params[:book_id]
-		@groups =  BookGroup.where(book_id: book_id).all
-		p "index"
-		p helpers.extractor(@groups)
+		@groups = Group.where(book_id: params[:book_id]).all
 	end 
 
 	def new 
@@ -12,7 +9,10 @@ class BookGroupsController < ApplicationController
 	end 
 
 	def show
-
+		@group = Group.find(params[:id])
+		cache = ActiveSupport::Cache::MemoryStore.new
+		p cache.write('city', "Fort Wayne")
+		p cache.read('city')
 	end 
 
 	def create
@@ -21,9 +21,9 @@ class BookGroupsController < ApplicationController
 			flash[:notice] = "The group was created"
 			book_id = group[:book_id]
 			group_id = group[:id]
-			BookGroup.create!(book_id: book_id, group_id: group_id)
+			Group.create!(book_id: book_id)
 
-			redirect_to book_book_groups_path, method: :get
+			redirect_to book_path(params[:book_id])
 		else
 			flash[:notice] = "The group wasn't created, try again later"
 		end

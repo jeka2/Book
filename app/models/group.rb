@@ -1,7 +1,8 @@
 class Group < ApplicationRecord
   belongs_to :book, optional: true
-  has_many :group_users
-  has_many :users, :through => :group_users
+  has_many :memberships
+  has_many :users, through: :memberships
+  has_many :messages
 
-  
+
 end

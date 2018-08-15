@@ -3,10 +3,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  has_many :group_users
-  has_many :user_books
-  has_many :books, :through => :user_books
-  has_many :groups, :through => :group_users
+  has_many :memberships
+  has_many :collections
+  has_many :groups, through: :memberships
+  has_many :books, through: :collections
   has_many :messages
   
   validates :first_name, presence: true
