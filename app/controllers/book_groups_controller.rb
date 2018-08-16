@@ -10,9 +10,7 @@ class BookGroupsController < ApplicationController
 
 	def show
 		@group = Group.find(params[:id])
-		cache = ActiveSupport::Cache::MemoryStore.new
-		p cache.write('city', "Fort Wayne")
-		p cache.read('city')
+		@messages = Message.all
 	end 
 
 	def create

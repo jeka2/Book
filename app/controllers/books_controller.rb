@@ -6,7 +6,6 @@ class BooksController < ApplicationController
 	end
 	
   	def show
-      p cache.read('city')
       @book = Book.find(params[:id])
       @groups =  Group.where(book_id: @book.id).all
   		@group = Group.where(user_id: @user.id)
