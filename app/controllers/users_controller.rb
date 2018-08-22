@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 	before_action :set_user
   	def show
-    	@books = current_user.books.all
+    	p "SDFDSFSDFF"
+      p @user
   	end
 
   	private

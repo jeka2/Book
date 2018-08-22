@@ -9,8 +9,7 @@ class BookGroupsController < ApplicationController
 	end 
 
 	def show
-		@group = Group.find(params[:id])
-		@messages = Message.all
+		redirect_to url_for(controller: :messages, action: :index, contr: "book_groups", id: params[:id])
 	end 
 
 	def create
@@ -19,19 +18,18 @@ class BookGroupsController < ApplicationController
 			flash[:notice] = "The group was created"
 			book_id = group[:book_id]
 			group_id = group[:id]
-			Group.create!(book_id: book_id)
-
-			redirect_to book_path(params[:book_id])
+			Group.create!(book_id: params[:book_id])
+			Membership.create!(user_id: current_user.id, group_id: group_id)
 		else
 			flash[:notice] = "The group wasn't created, try again later"
 		end
+		redirect_to book_path(params[:book_id])
 
 	end 
 
 	def destroy
-		group_id = params[:id]
 		book_id = params[:book_id].to_i
-		BookGroup.where(book_id: book_id, group_id: group_id).destroy_all
+		Group.where(book_id: book_id).destroy_all
 	end
 
 	private

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'landing/index'
+
   get 'messages/create'
 
   devise_for :users, controllers: { registrations: 'users/registrations'}
@@ -32,7 +34,7 @@ Rails.application.routes.draw do
 
   get '/my_profile' => 'users#show', as: :user_root
 
-  root 'users#show'
+  root 'landing#index'
 
   mount ActionCable.server, at: '/cable'
 
