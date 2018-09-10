@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'friendships/create'
+
+  get 'friendships/update'
+
+  get 'friendships/destroy'
+
   get 'landing/index'
 
   get 'messages/create'
@@ -19,6 +25,8 @@ Rails.application.routes.draw do
   resources :books, only: [:index, :show] do 
     resources :book_groups, only: [:index, :new, :create, :destroy, :show]
   end 
+
+  resources :friendships, only: [:create, :update, :destroy]
 
   get :autocomplete, controller: :main
 

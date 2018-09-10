@@ -18,7 +18,7 @@ class BookGroupsController < ApplicationController
 			flash[:notice] = "The group was created"
 			book_id = group[:book_id]
 			group_id = group[:id]
-			Group.create!(book_id: params[:book_id])
+		
 			Membership.create!(user_id: current_user.id, group_id: group_id)
 		else
 			flash[:notice] = "The group wasn't created, try again later"

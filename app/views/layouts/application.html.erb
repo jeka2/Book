@@ -61,7 +61,7 @@
             <h5>Recent Chats:</h5>
             <ul>
               <% current_user.groups.each do |group| %>
-                <li><%= link_to group.name, "#" %></li>
+                <li><%= link_to group.name, book_book_group_path(group.book_id, group.id), method: :get, data: { behavior: 'group-room-link', group_id: group.id} %></li>
               <% end %>
             </ul>
           <% end %>

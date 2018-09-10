@@ -10,4 +10,10 @@ class RoomChannel < ApplicationCable::Channel
   def unsubscribed
     stop_all_streams
   end
+
+  def send_message(data)
+  	@group = Group.find(data["group_id"])
+  	message = @group.messages.create(content: data["content"], user_id: current_user.id)
+  	MessageRelayJob.perform_later(message)
+  end
 end
