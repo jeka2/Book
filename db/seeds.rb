@@ -43,11 +43,7 @@ Book.create!(
 
   
 end
-10.times do 
-  Group.create!(
-    name: Faker::Simpsons.character,
-  )
-end
+
 
 test_user2 = User.create!(
   email: "b@b.com",

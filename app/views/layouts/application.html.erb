@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   <body>
   <header>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -61,7 +62,7 @@
             <h5>Recent Chats:</h5>
             <ul>
               <% current_user.groups.each do |group| %>
-                <li><%= link_to group.name, book_book_group_path(group.book_id, group.id), method: :get, data: { behavior: 'group-room-link', group_id: group.id} %></li>
+                <li><%= link_to group.name.truncate(10), book_book_group_path(group.book_id, group.id), method: :get, data: { behavior: 'group-room-link', group_id: group.id} %></li>
               <% end %>
             </ul>
           <% end %>

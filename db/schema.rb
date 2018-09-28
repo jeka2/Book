@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180828012610) do
+ActiveRecord::Schema.define(version: 20180928012706) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -27,11 +27,14 @@ ActiveRecord::Schema.define(version: 20180828012610) do
     t.boolean "finished"
     t.integer "chapter"
     t.integer "current_page"
+    t.integer "rating", default: 0
+    t.integer "rating_count", default: 0
     t.boolean "subscribed", default: false
     t.integer "user_id"
     t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["user_id"], name: "index_books_on_user_id"
   end
@@ -80,6 +83,16 @@ ActiveRecord::Schema.define(version: 20180828012610) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "rating_counters", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_rating_counters_on_book_id"
+    t.index ["user_id"], name: "index_rating_counters_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -98,6 +111,7 @@ ActiveRecord::Schema.define(version: 20180828012610) do
     t.datetime "confirmation_sent_at"
     t.string "first_name"
     t.string "last_name"
+    t.integer "rating"
     t.string "avatar"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

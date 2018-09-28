@@ -1,3 +1,28 @@
+<%= content_tag :div, class: "book_id", data: { id: params[:id] } do %>
+<% end %>
+<%= content_tag :div, class: "persistent_rating", data: { rating: @book_rating } do %>
+<% end %>
+<%= @book.name %><br>
+<%= content_tag :span, class: "bookRating" do %>
+<% end %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8"></div>
+		<div class="col-md-4">
+			<%= image_tag("default.png", alt: "Default_Book_Image", style: "height: 200px; width: 170px; alight: right") %><br>
+			<div class="rating"></div>
+			<div class="totalRatingStats">
+				<div class="totalRating">
+					<%= @book_rating %>
+				</div>
+				<div class="totalCount">
+					<%= "(#{@book.rating_count}) "%>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <%= link_to "Create a New Group for \"#{@book.name}\"", new_book_book_group_path(@book), method: :get %><br>
 <div class="subscription">
 	<% if @subscribed %>

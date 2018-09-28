@@ -28,6 +28,12 @@ Rails.application.routes.draw do
 
   resources :friendships, only: [:create, :update, :destroy]
 
+  resources :ratings, only: :create do
+    collection do
+      get 'rating'
+    end
+  end
+
   get :autocomplete, controller: :main
 
   get :search, controller: :main

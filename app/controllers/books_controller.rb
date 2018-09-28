@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-	before_action :load_user
+	before_action :load_books
 
 	def index 
 		
@@ -7,6 +7,8 @@ class BooksController < ApplicationController
 	
   	def show
       @book = Book.find(params[:id])
+      rating_present = true if @book.rating_count != 0
+      @book_rating = rating_present ? (@book.rating / @book.rating_count).round(1) : 0
       @groups =  Group.where(book_id: @book.id).all
   		@group = Group.where(user_id: @user.id)
   		@author = Author.find_by(id: @book.author_id)
@@ -15,7 +17,7 @@ class BooksController < ApplicationController
 
   	private 
 
-  	def load_user
+  	def load_books
 		@user = (User.find(params[:user_id]) if params[:user_id]) || current_user
 		@books = @user ? @user.books.order(name: :desc) : Book.all.order(name: :desc)
 	end 
