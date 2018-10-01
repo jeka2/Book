@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 	before_action :set_user
   	def show
-    	p "SDFDSFSDFF"
-      p @user
+    	
   	end
 
   	private

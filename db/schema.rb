@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180928012706) do
+ActiveRecord::Schema.define(version: 20181001003350) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20180928012706) do
     t.datetime "publish_date"
     t.string "description"
     t.boolean "finished"
-    t.integer "chapter"
     t.integer "current_page"
     t.integer "rating", default: 0
     t.integer "rating_count", default: 0
@@ -37,6 +36,14 @@ ActiveRecord::Schema.define(version: 20180928012706) do
     t.string "image"
     t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "chapters", force: :cascade do |t|
+    t.integer "book_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_chapters_on_book_id"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -59,9 +66,11 @@ ActiveRecord::Schema.define(version: 20180928012706) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.integer "book_id"
+    t.integer "chapter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_groups_on_book_id"
+    t.index ["chapter_id"], name: "index_groups_on_chapter_id"
   end
 
   create_table "memberships", force: :cascade do |t|

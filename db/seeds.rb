@@ -20,7 +20,6 @@ Book.create!(
     name: "Test",
     publisher: Faker::FunnyName.name,
     publish_date: Faker::Date.between(30.years.ago, Date.today),
-    chapter: 30,
     description: Faker::Book.genre,
     author: authors.sample,
     user: test_user,
@@ -28,12 +27,11 @@ Book.create!(
     finished: false
   )
 
-50.times do
+test_books = 50.times do
   Book.create!(
     name: Faker::Book.title,
     publisher: Faker::FunnyName.name,
     publish_date: Faker::Date.between(30.years.ago, Date.today),
-    chapter: 30,
     description: Faker::Book.genre,
     author: authors.sample,
     user: test_user,
@@ -44,11 +42,25 @@ Book.create!(
   
 end
 
+30.times do 
+  Chapter.create!(
+      book: test_book,
+      name: Faker::FunnyName.name
+    )
+end
 
 test_user2 = User.create!(
   email: "b@b.com",
   password: "password",
   first_name: "Tester2",
+  last_name: "LastName",
+  confirmed_at: Time.now
+)
+
+test_user3 = User.create!(
+  email: "c@c.com",
+  password: "password",
+  first_name: "Tester3",
   last_name: "LastName",
   confirmed_at: Time.now
   )

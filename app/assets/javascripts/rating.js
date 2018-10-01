@@ -1,12 +1,12 @@
 document.addEventListener("turbolinks:load", function(){
 
+	initialStar = (Math.trunc($('.totalRating').text()));
 	$('.rating').awesomeRating({
-		targetSelector: "span.bookRating",
-		valueInitial:   $('.persistent_rating').data('rating'),
+		targetSelector: "div.bookRating",
+		valueInitial:   initialStar,
 	});
 
 	$('.rating-star').click(function(){
-		console.log($('.persistent_rating').data('rating'))
 		$userRating = $('.bookRating').text();
 		$bookId     = $('.book_id').data('id');
 		$.ajax({

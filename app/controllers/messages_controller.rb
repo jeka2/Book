@@ -13,12 +13,11 @@ class MessagesController < ApplicationController
   private
 
   	def get_messages
-      if params[:contr] == "book_groups"
-        @group = Group.find(params[:id])
+      p "++++++"
+      p params[:group_id]
+        @group = Group.find(params[:group_id])
         @message = @group.messages.build(user_id: current_user.id)
-      else
-  		  @message = current_user.messages.build
-      end
+  		  ##@message = current_user.messages.build
   	end 
 
     def message_params

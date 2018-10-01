@@ -1,0 +1,2 @@
+<%= @chapter.name %><br>
+<%= link_to "Create a New Group for chapter - \"#{@chapter.name}\"",  new_book_chapter_group_path(book_id: @book, chapter: params[:id]), method: :get %><br>

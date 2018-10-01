@@ -1,16 +1,16 @@
 <%= content_tag :div, class: "book_id", data: { id: params[:id] } do %>
 <% end %>
-<%= content_tag :div, class: "persistent_rating", data: { rating: @book_rating } do %>
-<% end %>
 <%= @book.name %><br>
-<%= content_tag :span, class: "bookRating" do %>
+<% @chapters.each_with_index do |chapter, index| %>
+	<%= link_to "Chapter ##{index+1} -- #{chapter.name}", book_chapter_path(@book, chapter) %><br>
 <% end %>
-
+<%= content_tag :div, class: "bookRating" do %>
+<% end %>
 <div class="container">
 	<div class="row">
-		<div class="col-md-8"></div>
-		<div class="col-md-4">
-			<%= image_tag("default.png", alt: "Default_Book_Image", style: "height: 200px; width: 170px; alight: right") %><br>
+		<div class="col-md-6"></div>
+		<div class="col-md-4 pull-right">
+			<%= image_tag("default.png", alt: "Default_Book_Image", style: "height: 150px; width: 120px") %><br>
 			<div class="rating"></div>
 			<div class="totalRatingStats">
 				<div class="totalRating">
@@ -21,17 +21,15 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-md-2"></div>
 	</div>
 </div>
-<%= link_to "Create a New Group for \"#{@book.name}\"", new_book_book_group_path(@book), method: :get %><br>
+
 <div class="subscription">
 	<% if @subscribed %>
-		<%= render partial: 'book_groups/subscribe', locals: { user: @user, id: @book.id } %>
+		<%= render partial: 'chapter_groups/subscribe', locals: { user: @user, id: @book.id } %>
 	<% else %>
-		<%= render partial: 'book_groups/unsubscribe', locals: { user: @user, id: @book.id } %>
+		<%= render partial: 'chapter_groups/unsubscribe', locals: { user: @user, id: @book.id } %>
 	<% end %>
 </div>
 
-<% @groups.each do |group| %>
-	<%= link_to "#{group.name}", book_book_group_path(id: group.id, book_id: @book.id) %><br>
-<% end %>

@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   resources :messages, only: [:index, :create, :destroy]
 
   resources :books, only: [:index, :show] do 
-    resources :book_groups, only: [:index, :new, :create, :destroy, :show]
+    resources :chapters, only: [:index, :show]
+    resources :chapter_groups, only: [:index, :new, :create, :destroy, :show]
   end 
 
   resources :friendships, only: [:create, :update, :destroy]

@@ -1,0 +1,3 @@
+<% @groups.each do |group| %>
+	<%= link_to "#{group.name}", book_chapter_group_path(id: group.id) %><br>
+<% end %>

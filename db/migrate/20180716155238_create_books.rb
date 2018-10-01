@@ -6,7 +6,6 @@ class CreateBooks < ActiveRecord::Migration[5.1]
       t.datetime :publish_date
       t.string :description
       t.boolean :finished
-      t.integer :chapter
       t.integer :current_page
       t.integer :rating, default: 0
       t.integer :rating_count, default: 0

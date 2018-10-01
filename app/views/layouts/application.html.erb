@@ -3,7 +3,6 @@
   <head>
     <title>Blocmetrics</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -61,8 +60,8 @@
           <% if user_signed_in? %>
             <h5>Recent Chats:</h5>
             <ul>
-              <% current_user.groups.each do |group| %>
-                <li><%= link_to group.name.truncate(10), book_book_group_path(group.book_id, group.id), method: :get, data: { behavior: 'group-room-link', group_id: group.id} %></li>
+              <% current_user.groups.limit(5).each do |group| %>
+                <li><%= link_to group.name.truncate(10), messages_path(group_id: group.id), method: :get, data: { behavior: 'group-room-link', group_id: group.id} %></li>
               <% end %>
             </ul>
           <% end %>

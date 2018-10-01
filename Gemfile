@@ -27,6 +27,7 @@ gem 'ransack'
 gem 'redis'
 gem 'kramdown'
 gem 'font-awesome-rails'
+gem 'rails_emoji_picker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

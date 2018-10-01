@@ -1,10 +1,7 @@
 class SubscribeController < ApplicationController
 	def create
-		p "-----"
 		book = Book.find(params[:book_id])
 		current_user.books.update_attributes(subscribed: true).save
-		p current_user.where(book_id: book.id)
-		p "-----"
 	end
 
 	def destroy
