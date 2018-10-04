@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  require 'carrierwave/orm/activerecord'
   after_create :set_default_url!
 
   devise :database_authenticatable, :registerable, :confirmable,
@@ -36,8 +37,7 @@ class User < ApplicationRecord
   end
 
   def set_default_url!
-    avatar = AvatarUploader.default_url
-    update!(avatar: avatar)
+    p AvatarUploader
   end
 
 
