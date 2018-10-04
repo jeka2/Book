@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  after_create :set_default_url!
+
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -20,6 +22,9 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  enum status:  [:standard, :moderator, :admin]
+  enum private: [:publ, :priv]
+
   NAME_REGEX = /\w+/
 
   def friends
@@ -30,8 +35,10 @@ class User < ApplicationRecord
     pending_friends | requested_friendships
   end
 
-  enum status:  [:standard, :moderator, :admin]
-  enum private: [:publ, :priv]
+  def set_default_url!
+    avatar = AvatarUploader.default_url
+    update!(avatar: avatar)
+  end
 
 
 end
