@@ -30,5 +30,8 @@ class User < ApplicationRecord
     pending_friends | requested_friendships
   end
 
+  enum status:  [:standard, :moderator, :admin]
+  enum private: [:publ, :priv]
+
 
 end

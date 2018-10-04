@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :memberships, only: [:create, :destroy]
+
   get :autocomplete, controller: :main
 
   get :search, controller: :main
@@ -47,7 +49,7 @@ Rails.application.routes.draw do
 
   get '/search' => 'main#search'
 
-  get '/my_profile' => 'users#show', as: :user_root
+  get '/profile/:id' => 'users#show', as: :user_root
 
   root 'landing#index'
 

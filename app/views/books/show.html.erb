@@ -1,9 +1,6 @@
 <%= content_tag :div, class: "book_id", data: { id: params[:id] } do %>
 <% end %>
 <%= @book.name %><br>
-<% @chapters.each_with_index do |chapter, index| %>
-	<%= link_to "Chapter ##{index+1} -- #{chapter.name}", book_chapter_path(@book, chapter) %><br>
-<% end %>
 <%= content_tag :div, class: "bookRating" do %>
 <% end %>
 <div class="container">
@@ -24,6 +21,10 @@
 		<div class="col-md-2"></div>
 	</div>
 </div>
+
+<% @chapters.each_with_index do |chapter, index| %>
+	<%= link_to "Chapter ##{index+1} -- #{chapter.name}", book_chapter_path(@book, chapter) %><br>
+<% end %>
 
 <div class="subscription">
 	<% if @subscribed %>

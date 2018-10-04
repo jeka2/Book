@@ -60,7 +60,7 @@
           <% if user_signed_in? %>
             <h5>Recent Chats:</h5>
             <ul>
-              <% current_user.groups.limit(5).each do |group| %>
+              <% current_user.groups.order(id: :desc).limit(5).each do |group| %>
                 <li><%= link_to group.name.truncate(10), messages_path(group_id: group.id), method: :get, data: { behavior: 'group-room-link', group_id: group.id} %></li>
               <% end %>
             </ul>

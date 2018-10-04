@@ -4,6 +4,9 @@ class MessagesController < ApplicationController
  helper_method :display_chooser
 
  def index 
+  unless Membership.where(group_id: @group.id, user_id: current_user.id).exists?
+    @group.users << current_user
+  end
  	@messages = @group.messages.limit(100)
  end 
 
@@ -13,8 +16,6 @@ class MessagesController < ApplicationController
   private
 
   	def get_messages
-      p "++++++"
-      p params[:group_id]
         @group = Group.find(params[:group_id])
         @message = @group.messages.build(user_id: current_user.id)
   		  ##@message = current_user.messages.build
