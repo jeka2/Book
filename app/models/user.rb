@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   require 'carrierwave/orm/activerecord'
-  after_create :set_default_url!
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -34,10 +33,6 @@ class User < ApplicationRecord
 
   def pending
     pending_friends | requested_friendships
-  end
-
-  def set_default_url!
-    p AvatarUploader
   end
 
 

@@ -1,8 +1,8 @@
 <div class="message-input">
-  <%= form_for(@message) do |f| %>
-    <%= f.text_area :content, autofocus: true, class: 'form-control', data: { emojiable: true } %>
-    <%= hidden_field_tag :cont, params[:contr] %>
-  	<%= hidden_field_tag :id, params[:id] %>
-    <%= f.submit "Send", style: "display: none;" %>
-  <% end %>
+	  <%= form_for(@message) do |f| %>
+	    <%= f.text_area :content, autofocus: true %>
+	    <%= hidden_field_tag :cont, params[:contr] %>
+	  	<%= hidden_field_tag :id, params[:id] %>
+	    <%= f.submit "Send", style: "display: none;" %>
+	  <% end %>
 </div>

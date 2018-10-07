@@ -6,11 +6,10 @@ $(document).on 'turbolinks:load', ->
       $(this).submit()
 
   $('#message_content').on 'submit', (e) ->
-  	e.preventDefault()
-  	room_id = $("[data-behavior='messages']").data("group-id")
-  	content    = $("#message_content")
+    e.preventDefault()
+    room_id = $("[data-behavior='messages']").data("group-id")
+    content    = $("#message_content")
 
-  	App.room.send_message(room_id, content.val())
+    App.room.send_message(room_id, content.val())
 
-  	content.val("")
-
+    content.val("")

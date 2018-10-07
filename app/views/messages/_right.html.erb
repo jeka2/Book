@@ -1,7 +1,10 @@
-       <button class="btn    btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup= "true" aria-expanded="false"><%= message.user.first_name %>:</button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<div class="dropdown message-user ">
+        <button class="btn btn-secondary pull-rightdropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup= "true" aria-expanded="false"><%= message.user.first_name %>:</button>
+         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <ul class="dropdown-actions list-unstyled">
                 <li><%= link_to "Edit Profile", edit_user_registration_path, :class => 'dropdown-item'  %></li><br> 
                 <li><%= link_to "Sign Out", destroy_user_session_path, :class => 'dropdown-item', method: :delete  %></li>
             </ul>
         </div>
+
+    </div>
