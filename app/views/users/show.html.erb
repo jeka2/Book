@@ -3,3 +3,10 @@
 <% else %>
 	<%= render 'private' %>
 <% end %>
+<% if current_user == @user%>
+	<div class="subscribe-option">
+		<%= link_to privacy_index_path(user_id: params[:id]), method: :post, remote: true do %>
+			<span class="glyphicon glyphicon-check"></span>
+		<% end %>
+	</div>
+<% end %>

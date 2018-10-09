@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'friendships/create'
-
-  get 'friendships/update'
-
-  get 'friendships/destroy'
 
   get 'landing/index'
 
@@ -34,6 +29,8 @@ Rails.application.routes.draw do
       get 'rating'
     end
   end
+
+  resources :privacy, only: [:create, :destroy]
 
   resources :memberships, only: [:create, :destroy]
 
