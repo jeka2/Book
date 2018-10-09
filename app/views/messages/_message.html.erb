@@ -1,10 +1,7 @@
-<%= image_tag message.user.avatar.url(:thumb) unless message.user.avatar.blank? %>
 <div class="message">
-  <% if current_user == message.user %>
+  
     <%= render partial: 'left', locals: { message: message } %>
-  <% else %>
-    <%= render partial: 'right', locals: { message: message } %>
-  <% end %>
+  
   <div class="message-content">
     <%= sanitize markdown_to_html(message.content) %>
   </div>

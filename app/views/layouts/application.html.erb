@@ -21,7 +21,7 @@
         <% end %>
         <div class="nav nabbar-nav navbar-right">
           <% if user_signed_in? %>
-              <div class="pull-right dropdown"><button class="btn    btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup= "true" aria-expanded="false"><strong><%= current_user.email %></strong><%= image_tag current_user.avatar.url(:thumb) %></button>
+              <div class="pull-right dropdown"><button class="btn    btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup= "true" aria-expanded="false"><strong><%= current_user.email %></strong><%= image_tag current_user.avatar.thumb.url %></button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <ul class="dropdown-actions list-unstyled">
                     <%= link_to "Edit Profile", edit_user_registration_path, :class => 'dropdown-item'  %><br>
@@ -56,9 +56,10 @@
            <%= flash[:alert] %>
          </div>
     <% end %>
-    <div class="fluid-container" style="margin-top: 140px">
+    <div class="sizing-control"></div>
+    <div class="fluid-container">
       <div class="row">
-        <div class="col-sm-2" style="position: fixed; top: 140px; left: 0;">
+        <div class="col-sm-2" style="position: fixed;">
           <% if user_signed_in? %>
             <h5>Recent Chats:</h5>
             <ul>
