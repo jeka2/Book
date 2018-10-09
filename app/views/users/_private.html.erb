@@ -1,1 +1,6 @@
-<%= "private" %>
+<%= params %><br><%= 'private' %>
+<% if user == current_user %>
+<%= render partial: 'privacy/unprivatize', locals: { user_id: params[:id] } %>
+<% else %>
+	<%= "This profile is private" %>
+<% end %>

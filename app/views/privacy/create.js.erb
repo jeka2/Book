@@ -1,1 +1,2 @@
-console.log("hi")
+$('.subscribe-option').replaceWith("<%= j render(:partial => 'unprivatize', :locals => { :user_id => params[:user_id] }) %>")
+

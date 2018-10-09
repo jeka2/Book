@@ -1,1 +1,6 @@
-<%= @user.first_name %><%= " #{@user.last_name}" %>
+<%= params %><br><%= 'public' %>
+<% if user == current_user %>
+<%= render partial: 'privacy/privatize', locals: { user_id: params[:id] } %>
+<% else %>
+
+<% end %>
