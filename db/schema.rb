@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 20181003183321) do
     t.datetime "confirmation_sent_at"
     t.string "first_name"
     t.string "last_name"
+    t.integer "gender"
+    t.text "description"
     t.string "avatar"
     t.integer "status", default: 0
     t.integer "private", default: 0

@@ -2,7 +2,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -15,10 +14,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url(*args)
-    version :thumb do
-   process resize_to_fit: [50, 50]
-   ActionController::Base.helpers.asset_path("/fallback/" + [thumb, "thumb_default.png"].compact.join('_'))
- end
+   ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   end
 
   # Process files as they are uploaded:
@@ -31,9 +27,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process resize_to_fit: [50, 50]
-    def default_url
-      "thumb_default.png"
-    end
+  end
+
+  version :profile do 
+    process resize_to_fit: [200, 300]
   end
 
 

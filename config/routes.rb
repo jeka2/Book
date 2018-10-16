@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources  :descriptions, only: [:create, :update]
+
   resources :privacy, only: [:create, :destroy]
 
   resources :memberships, only: [:create, :destroy]
@@ -41,6 +43,8 @@ Rails.application.routes.draw do
   get :user_autocomplete, controller: :main
 
   get :user_search, controller: :main
+
+  get '/descriptions/button' => 'descriptions#button', as: :description_button
 
   get '/users/sign_out' => 'devise/sessions#destroy'
 

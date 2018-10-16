@@ -1,6 +1,5 @@
 class PrivacyController < ApplicationController
 	def create 
-		p params
 		@user = User.find(params[:user_id])
 		@user.update!(private: 1)
 	end 

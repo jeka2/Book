@@ -9,7 +9,7 @@ class BooksController < ApplicationController
       @book = Book.find(params[:id])
       @chapters = @book.chapters.all
       rating_present = true if @book.rating_count != 0
-      @book_rating = rating_present ? (@book.rating / @book.rating_count).round(1) : 0
+      @book_rating = rating_present ? (@book.rating * 1.0 / @book.rating_count).round(1) : 0
   		@group = Group.where(user_id: @user.id)
   		@author = Author.find_by(id: @book.author_id)
   		@subscribed = Collection.where(book_id: @book.id, user_id: @user.id).exists?

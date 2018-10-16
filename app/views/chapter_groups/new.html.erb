@@ -1,4 +1,3 @@
-<%= params %>
 <%= form_for @group, :url => book_chapter_groups_path, :method => :post do |f| %>
 	Group Name: <%= f.text_field :name %>
 				<%= f.hidden_field :book_id, :value => params[:book_id].to_i %>

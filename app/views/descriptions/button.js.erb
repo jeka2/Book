@@ -1,0 +1,1 @@
+$('.user-description').replaceWith("<%= j render(:partial => 'descriptions/update', :locals => { :user => User.find(params[:user].to_i) }, remote: true) %>");

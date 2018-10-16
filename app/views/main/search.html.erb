@@ -1,4 +1,6 @@
 <% @names.each do |book| %>
+<span class="d-inline-block">
+<%= image_tag book.image.medium.url %><br>
 <%= link_to book.name, book_path(book) %><br>
-<%= params %>
+</span>
 <% end %>

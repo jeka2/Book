@@ -6,8 +6,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6"></div>
-		<div class="col-md-4 pull-right">
-			<%= image_tag("thumb_default.png", alt: "Default_Book_Image", style: "height: 150px; width: 120px") %><br>
+		<div class="col-md-4">
+			<%= image_tag current_user.avatar.profile.url %><br>
 			<div class="rating"></div>
 			<div class="totalRatingStats">
 				<div class="totalRating">

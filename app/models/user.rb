@@ -24,6 +24,7 @@ class User < ApplicationRecord
 
   enum status:  [:standard, :moderator, :admin]
   enum private: [:publ, :priv]
+  enum gender:  [:male, :female, :other]
 
   NAME_REGEX = /\w+/
 

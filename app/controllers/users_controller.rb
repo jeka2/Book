@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
 	before_action :set_user
+  
   	def show
     	@user = User.find(params[:id])
+      @description_exists = @user.description
   	end
 
   	private
 
   	def user_params
-    	params.require(:user).permit(:email,:password,:first_name,:last_name, :avatar)
+    	params.require(:user).permit(:email,:password,:first_name,:last_name,:avatar)
   	end
 
   	def set_user 

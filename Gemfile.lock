@@ -232,6 +232,7 @@ DEPENDENCIES
   redcarpet
   redis
   sass-rails (~> 5.0)
+  sprockets
   sqlite3
   turbolinks (~> 5)
   tzinfo-data
