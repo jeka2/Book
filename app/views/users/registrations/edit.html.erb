@@ -1,6 +1,6 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-<%= resource.id %>
-<%= form_for(resource, as: resource_name, url: user_registration_path(id: resource.id), html: { method: :patch, :multipart => true }) do |f| %>
+<%= User.genders %>
+<%= form_for(resource, as: resource_name, url: user_registration_path(resource.id), html: { method: :put, :multipart => true }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -25,7 +25,7 @@
 
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.select :gender, User.genders %>
+    <%= f.select :gender, User.genders.keys %>
   </div>
  
  <div class="field">

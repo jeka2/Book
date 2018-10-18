@@ -1,16 +1,23 @@
 <% if user == current_user %>
-<%= image_tag current_user.avatar.profile.url %>
+	<%= image_tag current_user.avatar.profile.url %>
 	<div class="privacy pull-right">
 		Private? <%= render partial: 'privacy/unprivatize', locals: { user_id: params[:id] } %><br>
 	</div>
+	<div class="description-container">
 		<% if user.description.nil? %>
 			<%= render 'descriptions/new' %>
 		<% else %>
-			<div class="user-description">
-				<%= user.description %>
-				<%= link_to "update", description_button_path(user: @user), remote: true %>
+			<div class="description-and-update">
+				<div class="user-description">
+					<%= user.description %>
+				</div>
+				<div class="description-update">
+					<%= link_to "update", description_button_path(user: @user), remote: true %>
+				</div>
+			</div>
 			</div>
 		<% end %>
+	</div>
 <% else %>
 	<%= image_tag current_user.avatar.profile.url %>
 	<%= "This profile is private" %>
