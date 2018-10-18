@@ -1,6 +1,5 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-<%= User.genders %>
-<%= form_for(resource, as: resource_name, url: user_registration_path(resource.id), html: { method: :put, :multipart => true }) do |f| %>
+<%= form_for(resource, as: resource_name, url: user_registration_path(id: resource.id), html: { method: :patch, :multipart => true }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -22,8 +21,8 @@
     <%= f.text_field :last_name %>
   </div>
   <br />
-
-  <div class="field">
+  
+ <div class="field">
     <%= f.label :gender %><br />
     <%= f.select :gender, User.genders.keys %>
   </div>
@@ -33,6 +32,7 @@
     <%= f.file_field :avatar %>
  </div><br>
 
+ 
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>

@@ -21,7 +21,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
    def update
+    p params[:user][:id]
      super
+     
    end
 
   # DELETE /resource

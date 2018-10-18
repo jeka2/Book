@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   resources  :descriptions, only: [:create, :update]
 
+  resources :administrative, only: [:index, :create, :destroy]
+
   resources :privacy, only: [:create, :destroy]
 
   resources :memberships, only: [:create, :destroy]
