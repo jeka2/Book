@@ -13,9 +13,20 @@
 
 .container-fluid {
 	height: 20%;
+	backgroup-color: blue;
 }
 
 #user_description {
 	width: 100%;
 	height: 20%;
 }
+
+.banned-list {
+	font-size: 10px;
+	float: left;
+}
+
+.ban-pannel {
+	background-color: blue;
+}
+

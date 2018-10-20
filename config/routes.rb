@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :bans, only: [:index, :create, :destroy]
+
   resources  :descriptions, only: [:create, :update]
 
   resources :administrative, only: [:index, :create, :destroy]
@@ -45,6 +47,10 @@ Rails.application.routes.draw do
   get :user_autocomplete, controller: :main
 
   get :user_search, controller: :main
+
+  get 'bans/search' => 'bans#search', as: :bans_search
+
+  get '/bans/list' => 'bans#list', as: :bans_list
 
   get '/descriptions/button' => 'descriptions#button', as: :description_button
 

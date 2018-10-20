@@ -10,13 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181003183321) do
+ActiveRecord::Schema.define(version: 20181019220930) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.string "biography"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ban_storages", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "group_hash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_ban_storages_on_user_id"
+  end
+
+  create_table "bans", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_bans_on_group_id"
+    t.index ["user_id"], name: "index_bans_on_user_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -118,6 +135,7 @@ ActiveRecord::Schema.define(version: 20181003183321) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string "username"
     t.string "first_name"
     t.string "last_name"
     t.integer "gender"

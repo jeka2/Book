@@ -1,4 +1,5 @@
 test_user = User.create!(
+  username: Faker::GameOfThrones.character,
   email: "a@a.com",
   password: "password",
   first_name: "Tester1",
@@ -50,6 +51,7 @@ end
 end
 
 test_user2 = User.create!(
+  username: Faker::GameOfThrones.character,
   email: "b@b.com",
   password: "password",
   first_name: "Tester2",
@@ -58,6 +60,7 @@ test_user2 = User.create!(
 )
 
 test_user3 = User.create!(
+  username: Faker::GameOfThrones.character,
   email: "c@c.com",
   password: "password",
   first_name: "Tester3",
@@ -67,11 +70,31 @@ test_user3 = User.create!(
 
 10.times do 
   User.create!(
+    username: Faker::GameOfThrones.character,
     email: Faker::Internet.email,
     password: "password",
     first_name: Faker::Simpsons.character,
     last_name: "",
     confirmed_at: Time.now
+    )
+end
+
+all_users = User.all
+all_chapters = Chapter.all
+
+30.times do
+  Group.create!(
+      name: Faker::FunnyName.name,
+      chapter: all_chapters.sample
+    )
+end
+
+all_groups = Group.all
+
+30.times do 
+  Ban.create!(
+      user: all_users.sample,
+      group: all_groups.sample
     )
 end
 

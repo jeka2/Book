@@ -1,6 +1,5 @@
 class Group < ApplicationRecord
-  belongs_to :book
-  belongs_to :chapter, optional: true
+  belongs_to :chapter
   has_many :memberships
   has_many :users, through: :memberships
   has_many :messages

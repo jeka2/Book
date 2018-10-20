@@ -18,6 +18,12 @@
 @import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "rails_emoji_picker"
+@import "rails_emoji_picker";
+
+.autocomplete-form {
+	width: 70%;
+	height: 30px;
+}
+
 
 

@@ -1,1 +1,3 @@
-<%= current_user.gender %>
+<% BanStorage.all.each do |ban| %>
+	<%= ban.user_id %><%= ban.group_hash %>
+<% end %>

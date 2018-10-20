@@ -1,1 +1,15 @@
-Hi
+<%= form_tag bans_search_path, method: :get, remote: true do |f|%>
+	<%= label_tag(:q, "Search Banned User List") %>
+	<%= text_field_tag(:q) %>
+	<%= submit_tag("Search User") %>
+<% end %>
+
+<section class="container">
+	<span class="banned-list">
+		
+	</span>
+
+	<span class="ban-pannel">
+		Hi
+	</span>
+</section>

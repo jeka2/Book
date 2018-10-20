@@ -1,0 +1,7 @@
+<% banned_users.each_with_index do |user, index| %>
+	<% banned_groups = BanStorage.find_by(user_id: user.id).group_hash %>
+	<div class='banned_user_<%= user.username %>'>
+		<%= link_to user.username, bans_list_path(user: user.username, groups: banned_groups), remote: true %><br>
+	</div>
+<% end %>
+
