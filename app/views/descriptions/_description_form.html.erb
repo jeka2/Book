@@ -1,6 +1,5 @@
 <div class="update-user-description-form">
 	<%= form_for user, url: description_path(user.id), method: :patch, remote: true do |f| %>
-		<%= "What's something interseting about yourself?" %><br>
 		<%= f.text_area :description %>
 		<%= f.hidden_field(:updated, :value => true) %>
 		<%= f.submit "Update the Descrition" %>

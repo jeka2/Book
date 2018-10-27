@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'landing/index'
-
-  get 'messages/create'
-
   devise_for :users, controllers: { registrations: 'users/registrations'}
 
   resources :users, only: :show do
@@ -48,6 +44,12 @@ Rails.application.routes.draw do
 
   get :user_search, controller: :main
 
+  get '/friendships/panel' => 'friendships#panel', as: :friendships_panel
+
+  get 'landing/index'
+
+  get 'messages/create'
+
   get 'bans/search' => 'bans#search', as: :bans_search
 
   get '/bans/list' => 'bans#list', as: :bans_list
@@ -58,7 +60,7 @@ Rails.application.routes.draw do
 
   get '/search' => 'main#search'
 
-  get '/profile/:id' => 'users#show', as: :user_root
+  get '/users/:id' => 'users#show', as: :user_root
 
   root 'landing#index'
 

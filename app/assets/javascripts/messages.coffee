@@ -1,7 +1,6 @@
 $(document).on 'turbolinks:load', ->
   $('#message_content').on 'keydown', (e) ->
     if e && e.keyCode == 13 && !e.shiftKey
-      console.log "done"
       e.preventDefault()
       $(this).submit()
 

@@ -10,9 +10,9 @@ class ChapterGroupsController < ApplicationController
 
 	def create
 		group = Group.new(group_params)
+		group_id = group[:id]
 		if group.save
 			flash[:notice] = "The group was created"
-			group_id = group[:id]
 		
 			Membership.create!(user_id: current_user.id, group_id: group_id)
 		else

@@ -1,2 +1,2 @@
 $('.banned-list').empty();
-$('.banned-list').append("<div class='users'><%= j render(:partial => 'index', :locals => { :banned_users => @banned_users }) %></div>");
+$('.banned-list').append("<div class='banned-users'><%= j render(:partial => 'index', :locals => { :banned_users => @banned_users }) %></div>");

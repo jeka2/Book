@@ -5,9 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'rails', '~> 5.1.6'
 gem 'figaro'
 gem 'sprockets'
-gem 'rails', '~> 5.1.6'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -29,6 +29,7 @@ gem 'redis'
 gem 'kramdown'
 gem 'font-awesome-rails'
 gem 'rails_emoji_picker'
+gem 'has_friendship'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

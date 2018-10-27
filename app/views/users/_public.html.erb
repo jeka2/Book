@@ -3,20 +3,15 @@
 	<% if user == current_user %>
 		<div class="privacy pull-right">
 			Private? <%= render partial: 'privacy/privatize', locals: { user_id: params[:id] } %><br>
-		</div>
+		</div><br>
 			<%= "About me:" %><br>
-			<% if user.description.nil? %>
-				<%= render 'descriptions/new' %>
-			<% else %>
-				<div class="description-and-update">
-					<div class="user-description">
-						<%= user.description %>
-					</div>
-					<div class="description-update">
-						<%= link_to "update", description_button_path(user: @user), remote: true %>
-					</div>
-				</div>
-			<% end %>
+			<div class="description-parent">
+				<% if user.description.nil? %>
+					<%= render 'descriptions/new' %>
+				<% else %>
+					<%= render partial: 'descriptions/existing_description', locals: { user: user, updating_user: @user} %>
+				<% end %>
+			</div>
 	<% else %>
 		<div class="user-description">
 			<%= "About me:" %><br>

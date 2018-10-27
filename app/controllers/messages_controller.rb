@@ -16,11 +16,9 @@ class MessagesController < ApplicationController
   	def get_messages
         @group = Group.find(params[:group_id])
         @message = @group.messages.build(user_id: current_user.id)
+        @current_user = current_user
   	end 
 
-    def render_message(message)
-    	render(partial: 'message', locals: { message: message })
-    end
-
+   
     
 end

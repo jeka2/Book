@@ -1,0 +1,3 @@
+$('.new-user-description-form').hide();
+$descriptionText = ("<%= @user.description %>");
+$('description-parent').append("<%= j render(:partial => 'descriptions/existing', :locals => { user: User.find(params[:id].to_i), updating_user: @user, description: $descriptionText }) %>");

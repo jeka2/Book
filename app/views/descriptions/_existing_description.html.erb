@@ -1,0 +1,13 @@
+<div class="description-and-update">
+						<div class="user-description">
+							<% if params[:description] %>
+								<%= description %>
+							<% else %>
+								<%= user.description %>
+							<% end %>
+						</div>
+						<div class="description-update">
+							<%= link_to "update", description_button_path(user: updating_user), remote: true %>
+						</div>
+					</div>
+				

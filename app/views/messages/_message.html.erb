@@ -1,3 +1,15 @@
-<div class="message">
-    <%= render partial: 'left', locals: { message: message } %>
+<div class="dropdown message-user ">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup= "true" aria-expanded="false"><%= image_tag message.user.avatar.url(:thumb) %><%= message.user.first_name %>:</button>
+         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+         	    
+	            <%= render 'personal_options' %>
+	        	<%= render partial: 'other_users_options', locals: { user: message.user.id } %>
+               
+        </div>
+
 </div>
+
+    <div class="message-content">
+    <%= sanitize markdown_to_html(message.content) %>
+</div>
+  

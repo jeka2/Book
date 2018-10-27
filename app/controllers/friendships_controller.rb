@@ -1,26 +1,44 @@
 class FriendshipsController < ApplicationController
   def create
-  	@friendship = current_user.friendships.build(friend_id: params[:friend_id])
+  	potential_friend = User.find(params[:id])
+  	friendship = current_user.friend_request(potential_friend) 
 	  if @friendship.save
-	    flash[:notice] = "Friend requested."
+	    flash[:notice] = "Friend request sent."
 	  else
 	    flash[:error] = "Unable to request friendship."
 	  end
   end
 
   def update
-  	@friendship = Friendship.find_by(id: params[:id])
-	  @friendship.update(status: "accepted")
+  	friend_id = params[:id]
+  	@friendship = Friendship.find_by(user_id: friend_id, friend_id: current_user.id)
+	  @friendship.update(accepted: true)
 	  if @friendship.save
-	    flash[:notice] "Successfully confirmed friend!"
+	    flash[:notice] = "Successfully confirmed friend!"
 	  else
-	    flash[:notice] "Sorry! Could not confirm friend!"
+	    flash[:notice] = "Sorry! Could not confirm friend!"
 	  end
+	  redirect_to :root_path
   end
 
   def destroy
-  	@friendship = Friendship.find_by(id: params[:id])
-	  @friendship.destroy
-	  flash[:notice] = "Removed friendship."
+  	p "SDLFKJFLD"
+  	p params
+  	friend_id = params[:id]
+  	@friendship = Friendship.find_by(user_id: current_user.id, friend_id: friend_id)
+	  if @friendship.destroy
+	  	flash[:notice] = "Removed friendship."
+	  else
+	  	flash[:notice] = "Unable to remove friendship, please try again later."
+	  end
   end
+
+  def decline
+  	declined_user_id = params[:user_id]
+  end
+
+  def panel
+  	@friendship = Friendship.find_by(user_id: current_user, friend_id: params[:id])
+  end
+
 end
