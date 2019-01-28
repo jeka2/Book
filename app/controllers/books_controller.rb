@@ -1,9 +1,10 @@
 class BooksController < ApplicationController
 	before_action :load_books
 
-	def index 
-		
-	end
+  	def index 
+		  cache = ActiveSupport::Cache::MemoryStore.new
+      cache.write('current_user', "#{current_user}")
+  	end
 	
   	def show
       @book = Book.find(params[:id])

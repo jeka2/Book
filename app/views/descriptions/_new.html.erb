@@ -1,5 +1,5 @@
 <div class="new-user-description-form">
-	<%= form_for @user, as: :post, url: descriptions_path(user_id: @user), method: :create, remote: true do |f| %>
+	<%= form_for @user, as: :post, url: descriptions_path(user_id: @user), method: :post, remote: true do |f| %>
 		<%= f.text_area :description %>
 		<%= f.submit "Create a Description" %>
 	<% end %>

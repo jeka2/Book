@@ -1,3 +1,4 @@
 <% @books.each do |book| %>
 	<%= book.name %><br>
 <% end %>
+<%= cache.read('current_user') %>

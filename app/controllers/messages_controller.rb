@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
  before_action :get_messages
 
  def index 
+  @current_user_id = current_user.id
   unless Membership.where(group_id: @group.id, user_id: current_user.id).exists?
     @group.users << current_user
   end
