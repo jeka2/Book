@@ -20,7 +20,7 @@ gem 'jquery-rails'
 gem 'faker'
 gem 'redcarpet'
 gem 'jquery-ui-rails'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'mini_magick'
 gem 'carrierwave-graphicsmagick'
 
